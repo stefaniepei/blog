@@ -22,8 +22,6 @@ function defineReactive(obj,key,val){
   })
 }
 
-
-
 let handler = {
   get(target, key, receiver) {
     return Reflect.get(target, key, receiver);
