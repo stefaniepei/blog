@@ -17,7 +17,12 @@ let dirname = path.resolve();
                 }
                 resolve(result || '');
             }];
-            item === 'readFile' ? arg.unshift('utf8') : null;
+            if (item === 'readFile') {
+                //=>非图片或者音视频等富媒体资源设置UTF-8
+                if (!/(JPG|JPEG|PNG|GIF|SVG|ICO|BMP|EOT|TTF|WOFF|MP3|MP4|OGG|WAV|M4A|WMV|AVI)$/i.test(pathname)) {
+                    arg.unshift('utf8');
+                }
+            }
             item === 'copyFile' ? arg.unshift(copypath) : null;
             fs[item](pathname, ...arg);
         });
