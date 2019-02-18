@@ -30,6 +30,14 @@
     一个新对象被创建，继承X.prototype,构造函数X被执行。相应参数会被传入，上下文this会被指定新实例。如果构造函数返回一个对象，该对象会取代整个new的结果。如果没则为新对象
 
   ```
+  function _new(fn, ...arg) {
+    const obj = Object.create(fn.prototype);
+    const ret = fn.apply(obj, arg);
+    return ret instanceof Object ? ret : obj;
+  }
+  ```
+
+  ```
   //借助构造函数实现继承,无法继承到原型链上面的say方法
   function Parent1(){
     this.name='parent1'
@@ -84,12 +92,12 @@
 
   // 圣杯模式 转自:https://juejin.im/post/5c64d15d6fb9a049d37f9c20
   var inherit = (function(c,p){
-	var F = function(){};
-	return function(c,p){
-		F.prototype = p.prototype;
-		c.prototype = new F();
-		c.uber = p.prototype;
-		c.prototype.constructor = c;
-	}
-})();
+    var F = function(){};
+    return function(c,p){
+      F.prototype = p.prototype;
+      c.prototype = new F();
+      c.uber = p.prototype;
+      c.prototype.constructor = c;
+    }
+  })();
   ```
