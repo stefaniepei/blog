@@ -80,9 +80,16 @@
   Child5.prototype=Object.create(Parent5.prototype); // 原型对象是父类的
   Child5.prototype.constructor=Child5;// 覆盖成子类的原型对象
 
-  class Child6 extend Parent6{
-    constructor(){
-      super()
-    }
-  }
+  class Child6 extend Parent6{}
+
+  // 圣杯模式 转自:https://juejin.im/post/5c64d15d6fb9a049d37f9c20
+  var inherit = (function(c,p){
+	var F = function(){};
+	return function(c,p){
+		F.prototype = p.prototype;
+		c.prototype = new F();
+		c.uber = p.prototype;
+		c.prototype.constructor = c;
+	}
+})();
   ```
