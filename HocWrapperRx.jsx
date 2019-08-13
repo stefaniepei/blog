@@ -21,7 +21,7 @@ export const HocWrapperRx = (WrappedComponent, observableFactory, defaultState) 
   }
 }
 
-// demo
+// demo-counter
 export default HocWrapperRx(CounterView,() => {
   const counter = new BehaviorSubject(0);
   return counter.pipe(
@@ -29,3 +29,33 @@ export default HocWrapperRx(CounterView,() => {
       map(value => ({ count: value, onInc: () => counter.next(1), onDec: () => counter.next(-1)}))
     )
 },0)
+
+// demo-timer
+ export default HocWrapperRx(TimerView,() => {
+    const timer = new Subject();
+    const time$ = timer.pipe(
+      tap(ev => console.log(ev)),
+      switchMap(value=>{
+        switch(value){
+          case START:
+            return interval(100).pipe(
+              // timeInterval(),
+              scan((acc, val) => acc + val ,0),
+              tap(ev => console.log(ev)))
+              
+          case STOP:
+            return empty()
+          case RESET:
+            return of(0)
+          default:
+            return throwError('Invalid value ', value)
+        }
+      })
+    )
+    const stopTime = new BehaviorSubject(0)
+
+    return merge(stopTime, time$).pipe(
+        // tap(ev => console.log(ev)),
+        map(value => ({ time: value, onStart: () => timer.next(START), onPause: () => timer.next(STOP), onReset: () => timer.next(RESET)}))
+      )
+  },0)
