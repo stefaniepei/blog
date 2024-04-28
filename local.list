@@ -1,51 +1,5 @@
-# Unbreak 白名单 不应该被广告链接的网站
+# Unbreak 强制启动
 
 # Thesports
 DOMAIN-SUFFIX,thesports.com
 DOMAIN-SUFFIX,thesports01.com
-
-# Epicgames
-DOMAIN-SUFFIX,iwgame.com
-DOMAIN-SUFFIX,lvanol.com
-
-# Getui
-DOMAIN-SUFFIX,iwgame.tec
-
-# Google
-DOMAIN,dl.google.com
-DOMAIN-SUFFIX,googletraveladservices.com
-
-# Mozilla
-DOMAIN-SUFFIX,tracking-protection.cdn.mozilla.net
-
-# Origin
-DOMAIN,origin-a.akamaihd.net
-
-# iwgame
-DOMAIN, oa.lvanol.com
-
-# Tencent
-DOMAIN,fairplay.l.qq.com
-DOMAIN,livew.l.qq.com
-DOMAIN,vd.l.qq.com
-
-
-# Strava
-
-# Umeng
-DOMAIN,errlog.umeng.com
-DOMAIN,msg.umeng.com
-DOMAIN,msg.umengcloud.com
-
-
-DOMAIN,gitlab-outside.iwgame.com
-
-# Miui 小米
-DOMAIN,tracking.miui.com
-
-# General
-DOMAIN,app.adjust.com
-DOMAIN,bdtj.tagtic.cn
-
-# Hypixel Network
-DOMAIN,rewards.hypixel.net
