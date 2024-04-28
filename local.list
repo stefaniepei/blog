@@ -1,5 +1,6 @@
-# Unbreak 强制启动
-
 # Thesports
+USER-AGENT,*thesports*
+USER-AGENT,TheSports*
+DOMAIN-KEYWORD,thesports
 DOMAIN-SUFFIX,thesports.com
 DOMAIN-SUFFIX,thesports01.com
